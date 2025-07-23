@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Student data</title>
+</head>
+<body>
+    <ul>
+    {% for i in students%}
+        <div id="{{i.id}}">
+            <li>Name:{{i.name}} Email:{{i.id}}</li><a href="{%url 'post' i.id%}">link</a>
+        </div>
+    {% endfor %}
+    <button onclick="window.location.href='/app'">Back to form </button>
+    </ul>
+</body>
+</html>

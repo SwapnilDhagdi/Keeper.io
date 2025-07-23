@@ -1,0 +1,38 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Keeper App</title>
+</head>
+<body>
+    <div class="nav">
+        <div class="title">
+            <h1>Keeper.io</h1>  
+        </div>
+    </div>
+    <div class="Get_data">
+    <h5>Enter Your data </h5>
+    <form action="{%url 'form'%}" method="post">
+         {% csrf_token %}
+        <textarea name="Title" id="title" placeholder="Title"></textarea>
+        <textarea name="Description" id="description" placeholder="Description"></textarea>
+       
+        <input type="submit" id="submit" placeholder="Add">
+    </form>
+    </div>
+
+    <div class="content">
+        {% for i in students%}
+            <div id="{{i.id}}" class="list_data">
+                <h3 id="title">{{i.name}}</h3>
+                <h4 id="description">{{i.email}}</h4>
+                <a href="{%url 'post' i.id%}" id="delete">Delete</a>
+            </div>
+        {% endfor %}
+        
+    </div>
+</body>
+</html>
